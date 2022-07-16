@@ -1,4 +1,4 @@
-Учебное приложение на FASTAPI
+## Учебное приложение на FASTAPI
 
 1) Развернул docker
 2) Развернул docker-compose с db postgresql
