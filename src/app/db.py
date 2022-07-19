@@ -12,11 +12,11 @@ employee = Table(
     "employee",
     metadata,
     Column("id", Integer, primary_key=True),
-    Column("full name", String(50)),
-    Column("job title", String(50)),
-    Column("employment date", DateTime),
+    Column("full_name", String(50)),
+    Column("job_title", String(50)),
+    Column("employment_date", DateTime),
     Column("salary", Integer),
-    Column("id chief", Integer),
+    Column("id_chief", Integer),
 )
 
 # databases query builder
