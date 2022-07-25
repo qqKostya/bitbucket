@@ -1,23 +1,16 @@
 import os
 
-from databases import Database
-from sqlalchemy import create_engine, MetaData, Column, Integer, Table, String, DateTime
+from sqlmodel import create_engine, SQLModel, Session
 
-DATABASE_URL = os.getenv("DATABASE_URL")
+DATABASE_URL = os.environ.get("DATABASE_URL")
 
-# SQLAlchemy
-engine = create_engine(DATABASE_URL)
-metadata = MetaData()
-employee = Table(
-    "employee",
-    metadata,
-    Column("id", Integer, primary_key=True),
-    Column("full_name", String(50)),
-    Column("job_title", String(50)),
-    Column("employment_date", DateTime),
-    Column("salary", Integer),
-    Column("id_chief", Integer),
-)
+engine = create_engine(DATABASE_URL, echo=True)
 
-# databases query builder
-database = Database(DATABASE_URL)
+
+def create_db_and_tables():
+    SQLModel.metadata.create_all(engine)
+
+
+def get_session():
+    with Session(engine) as session:
+        yield session
